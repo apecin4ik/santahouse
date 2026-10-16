@@ -1,0 +1,18 @@
+name: SantaHouse
+version: 1.0.0
+main: me.santahouse.SantaHouse
+api-version: "1.16"
+softdepend: [WorldGuard, WorldEdit, FastAsyncWorldEdit, GriefPrevention]
+description: Ивент «Дом Санты» — зимний дом с подарками
+commands:
+  santa:
+    description: Информация об ивенте Дом Санты
+    usage: /santa [start|stop|reload]
+    aliases: [santahouse, domsanty]
+permissions:
+  santahouse.use:
+    description: Смотреть информацию об ивенте
+    default: true
+  santahouse.admin:
+    description: Запускать, останавливать и перезагружать ивент
+    default: op

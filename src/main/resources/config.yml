@@ -1,0 +1,89 @@
+# ===== Ивент «Дом Санты» =====
+# Несколько раз в день в мире появляется зимний дом Санты с сундуками и бочками, полными подарков.
+# Игроки находят дом (красный луч маяка), открывают контейнеры и забирают лут.
+
+prefix: "&b&l❄ &4&lДом Санты &8&l» &7"
+
+# Мир, в котором появляется дом (настоящее имя мира)
+world: grief-1
+# Как мир называется в сообщениях для игроков
+world-display-name: "Обычный мир"
+
+# Часовой пояс и подпись в сообщениях
+timezone: "Europe/Moscow"
+timezone-label: "МСК"
+
+# Время запуска ивента (формат ЧЧ:ММ, обязательно с нулём: 08:00)
+start-times:
+  - "14:00"
+  - "21:00"
+
+# За сколько минут до старта предупреждать в чате
+announce-before-minutes:
+  - 10
+  - 5
+  - 1
+
+# Сколько минут стоит дом
+duration-minutes: 20
+
+# Где появляется дом: случайная точка в кольце вокруг центра
+location:
+  center-x: 0
+  center-z: 0
+  min-radius: 300
+  max-radius: 3000
+  # Сколько блоков вокруг дома проверять: только природная земля, без деревьев, построек и воды
+  clearance: 6
+  # Максимальный перепад высот под домом (ровное место)
+  max-slope: 4
+
+# Обход чужих приватов (WorldGuard, GriefPrevention)
+protection:
+  avoid-claims: true
+  # Запас в блоках вокруг дома, где не должно быть чужих приватов
+  margin: 10
+
+# Схематика дома (лежит в plugins/SantaHouse/schematics/)
+house:
+  schematic-file: "domsanta.schem"
+  # Смещение по высоте. 0 = нижний слой схематики (трава и пол) на уровне самой высокой точки участка
+  y-offset: 0
+  # Красный маяк рядом с домом (виден издалека, открыть его нельзя)
+  beacon: true
+
+# Зона ивента вокруг дома
+event-area:
+  # Запретить игрокам ставить блоки и лить воду/лаву в зоне
+  block-placing-denied: true
+  # Радиус зоны от центра дома (блоков)
+  radius: 20
+  # Блоки, которые всё равно можно ставить (например, LADDER)
+  allowed-blocks: []
+
+# Убрать дом и вернуть местность после ивента
+remove-house-after-end: true
+
+# Что появляется в сундуках и бочках при старте ивента.
+# weight — относительный шанс предмета, min/max — количество, name — своё название (цвета через &).
+loot:
+  items-per-container:
+    min: 2
+    max: 5
+  items:
+    - {material: SNOWBALL, min: 8, max: 16, name: "&b❄ &4&lПодарок &f&lСанты &b❄", weight: 40}
+    - {material: COOKIE, min: 4, max: 12, name: "&6Печенье Санты", weight: 20}
+    - {material: GOLDEN_CARROT, min: 4, max: 12, weight: 15}
+    - {material: COAL, min: 8, max: 24, weight: 15}
+    - {material: FIREWORK_ROCKET, min: 3, max: 8, weight: 10}
+    - {material: IRON_INGOT, min: 2, max: 8, weight: 10}
+    - {material: GOLD_INGOT, min: 2, max: 6, weight: 8}
+    - {material: LAPIS_LAZULI, min: 6, max: 16, weight: 8}
+    - {material: GOLDEN_APPLE, min: 1, max: 2, weight: 6}
+    - {material: ENDER_PEARL, min: 1, max: 2, weight: 3}
+    - {material: DIAMOND, min: 1, max: 2, weight: 3}
+  # Команды от консоли при первом открытии каждого контейнера ({player} — ник открывшего).
+  # chance — шанс от 0 до 1. Пример (проверь команду своего плагина!):
+  # bonus-commands:
+  #   - {chance: 0.03, command: "give {player} minecraft:diamond 1"}
+  bonus-commands: []
